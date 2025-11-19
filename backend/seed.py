@@ -126,7 +126,9 @@ def popular_banco():
         for idx, doc_data in enumerate(DOCS_PETSHOP, 1):
             print(f"Processando documento {idx}/{len(DOCS_PETSHOP)}: {doc_data['titulo']}")
             
-            # gera embedding do conteúdo
+            # gera embedding do conteúdo completo
+            # não usamos chunks aqui porque nossos docs já são pequenos (100-200 palavras).
+            # Se tivéssemos docs grandes (>500 palavras), seria aqui que dividiríamos em chunks usando longchain.text_splitter
             texto = f"{doc_data['titulo']} {doc_data['conteudo']}"
             embedding = gerar_embedding(texto)
             
