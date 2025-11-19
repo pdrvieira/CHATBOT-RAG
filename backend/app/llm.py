@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def configurar_llm():
+    # para testar esse codigo apos clona-lo é necessário criar um arquivo .env
+    # com a variável OPENROUTER_API_KEY contendo a chave da OpenRouter que voces criou
+    # no site https://openrouter.ai/ usando API do deepseek/deepseek-r1-0528-qwen3-8b:free
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         raise ValueError("OPENROUTER_API_KEY não encontrada no .env")

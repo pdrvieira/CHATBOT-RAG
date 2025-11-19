@@ -86,7 +86,7 @@ source venv/bin/activate  # no Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. **Configure as variáveis de ambiente**
+4. **Configure as variáveis de ambiente IMPORTANTE**
 ```bash
 cp .env.example .env
 # edite o .env e adicione sua OPENROUTER_API_KEY
