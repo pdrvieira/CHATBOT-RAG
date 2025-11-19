@@ -1,3 +1,5 @@
+import { Chat } from './sections/Chat'
+
 function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
@@ -11,11 +13,7 @@ function App() {
           </p>
         </header>
 
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <p className="text-slate-500 text-center">
-            Carregando...
-          </p>
-        </div>
+        <Chat />
       </div>
     </div>
   )
