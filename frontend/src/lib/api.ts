@@ -12,7 +12,19 @@ export async function enviarMensagem(question: string): Promise<ChatResponse> {
   })
 
   if (!response.ok) {
-    throw new Error(`Erro na API: ${response.status} ${response.statusText}`)
+    // Tenta pegar a mensagem de erro do backend
+    let errorMessage = `Erro na API: ${response.status} ${response.statusText}`
+    
+    try {
+      const errorData = await response.json()
+      if (errorData.detail) {
+        errorMessage = errorData.detail
+      }
+    } catch {
+      // Se não conseguir parsear JSON, usa a mensagem padrão
+    }
+    
+    throw new Error(errorMessage)
   }
 
   const data: ChatResponse = await response.json()

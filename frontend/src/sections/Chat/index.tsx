@@ -31,10 +31,15 @@ export function Chat() {
     } catch (erro) {
       console.error('Erro ao enviar mensagem:', erro)
       
-      // mostra erro pro usuário de forma amigável
+      // Extrai a mensagem de erro (pode vir do backend ou ser genérica)
+      const mensagemErroTexto = erro instanceof Error 
+        ? erro.message 
+        : 'Desculpe, não consegui processar sua mensagem. Tente novamente.'
+      
+      // mostra erro pro usuário
       const mensagemErro: Mensagem = {
         role: 'assistant',
-        content: 'Desculpe, não consegui processar sua mensagem. Tente novamente.',
+        content: mensagemErroTexto,
       }
       setMensagens((prev) => [...prev, mensagemErro])
     } finally {
