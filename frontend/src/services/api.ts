@@ -6,7 +6,7 @@ export async function enviarMensagem(question: string): Promise<ChatResponse> {
   const response = await fetch(`${API_URL}/chat`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',s
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ question } as ChatRequest),
   })
