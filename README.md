@@ -10,14 +10,14 @@ Chat inteligente que responde perguntas sobre um petshop usando RAG (Retrieval A
 - **SQLite** - Banco de dados
 - **Sentence Transformers** - Modelo BGE-small para embeddings
 - **LangChain** - Integração com LLMs
-- **DeepSeek R1** - LLM via OpenRouter
+- **Qwen 2.5** - LLM via OpenRouter
 - **Pytest** - Testes
 
 ### Frontend
 - **React** - Biblioteca UI
 - **TypeScript** - Tipagem estática
 - **Vite** - Build tool
-- **CSS Modules** - Estilização
+- **Tailwind CSS** - Estilização
 
 ## 🧠 Como Funciona o RAG
 
@@ -26,7 +26,7 @@ Chat inteligente que responde perguntas sobre um petshop usando RAG (Retrieval A
 3. **Busca documentos similares** no banco (cálculo de similaridade cosseno)
 4. **Seleciona os top-3 documentos** mais relevantes
 5. **Monta um contexto** juntando os documentos
-6. **Envia para o LLM** (DeepSeek R1) com o contexto
+6. **Envia para o LLM** (Qwen 2.5) com o contexto
 7. **Retorna a resposta** para o frontend com as fontes usadas
 
 ```
@@ -44,7 +44,7 @@ chatbot-RAG/
 │   │   ├── models.py         # modelo Document
 │   │   ├── schemas.py        # schemas Pydantic
 │   │   ├── embeddings.py     # BGE-small + similaridade
-│   │   ├── llm.py            # integração LangChain + DeepSeek
+│   │   ├── llm.py            # integração LangChain + Qwen
 │   │   ├── rag.py            # pipeline RAG completo
 │   │   └── routes/
 │   │       └── chat.py       # endpoint /chat
@@ -52,15 +52,18 @@ chatbot-RAG/
 │   │   ├── test_rag.py       # testes de retrieval
 │   │   └── test_chat.py      # testes de montagem de contexto
 │   ├── seed.py               # popula o banco com docs do petshop
+│   ├── testar_modelos.py     # script para testar modelos
 │   ├── requirements.txt
-│   └── .env.example
+│   └── .env                  # variáveis de ambiente (criar manualmente)
 │
 └── frontend/
     ├── src/
     │   ├── components/       # componentes reutilizáveis
     │   ├── sections/         # seções da página
     │   ├── services/         # chamadas API
-    │   └── types/            # tipos TypeScript
+    │   ├── lib/              # tipos TypeScript
+    │   ├── assets/           # imagens e recursos
+    │   └── styles/           # estilos CSS
     ├── package.json
     └── vite.config.ts
 ```
@@ -88,9 +91,10 @@ pip install -r requirements.txt
 
 4. **Configure as variáveis de ambiente IMPORTANTE**
 ```bash
-cp .env.example .env
-# edite o .env e adicione sua OPENROUTER_API_KEY
-# pegue uma chave em: https://openrouter.ai/keys
+# Crie um arquivo .env na pasta backend/ com o seguinte conteúdo:
+# OPENROUTER_API_KEY=sua_chave_aqui
+# 
+# Obtenha sua chave em: https://openrouter.ai/keys
 ```
 
 5. **Popule o banco de dados**
@@ -182,16 +186,17 @@ Verifica se o servidor está rodando.
 ## 📦 Dependências Principais
 
 **Backend:**
-- `fastapi==0.115.6`
+- `fastapi==0.109.0`
 - `sqlalchemy==2.0.36`
-- `sentence-transformers==3.3.1`
+- `sentence-transformers==2.3.1`
 - `langchain==0.3.17`
 - `pytest==7.4.4`
 
 **Frontend:**
 - `react==18.3.1`
-- `typescript==5.6.2`
-- `vite==6.0.3`
+- `typescript==5.5.3`
+- `vite==5.4.2`
+- `tailwindcss==3.4.10`
 
 ## 🔧 Próximas Melhorias Possiveis...
 

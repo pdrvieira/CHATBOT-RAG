@@ -20,6 +20,11 @@ frontend/dist/
 frontend/.env
 frontend/.env.local
 
+# Root level node files
+node_modules/
+package.json
+package-lock.json
+
 # IDE
 .vscode/
 .idea/

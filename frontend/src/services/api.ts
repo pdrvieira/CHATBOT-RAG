@@ -1,4 +1,4 @@
-import type { ChatRequest, ChatResponse } from './types'
+import type { ChatRequest, ChatResponse } from '../lib/types'
 
 const API_URL = 'http://localhost:8000'
 
@@ -6,7 +6,7 @@ export async function enviarMensagem(question: string): Promise<ChatResponse> {
   const response = await fetch(`${API_URL}/chat`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json',s
     },
     body: JSON.stringify({ question } as ChatRequest),
   })

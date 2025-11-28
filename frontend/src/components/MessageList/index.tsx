@@ -3,7 +3,7 @@ import type { Mensagem } from '../../lib/types'
 import { MessageBubble } from '../Mensagem'
 
 interface MessageListProps {
-  mensagens: Mensagem[]
+  mensagens: Mensagem[] // array de mensagens a serem exibidas
 }
 
 export function MessageList({ mensagens }: MessageListProps) {

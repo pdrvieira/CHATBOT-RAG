@@ -8,4 +8,3 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
     sources: list[str] = []  # docs que foram usados pra gerar a resposta
-

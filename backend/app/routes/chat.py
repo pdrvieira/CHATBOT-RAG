@@ -14,6 +14,7 @@ def chat(request: ChatRequest, db: Session = Depends(get_db)):
     try:
         resultado = obter_resposta_rag(request.question, db)
         
+        #retorno JSON automatico conforme schema ChatResponse
         return ChatResponse(
             answer=resultado["answer"],
             sources=resultado["sources"]

@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import type { Mensagem } from '../../lib/types'
-import { enviarMensagem } from '../../lib/api'
+import { enviarMensagem } from '../../services/api'
 import { MessageList } from '../../components/MessageList'
 import { MessageInput } from '../../components/InputChat'
 import { Loading } from '../../components/Loading'
 
 export function Chat() {
-  const [mensagens, setMensagens] = useState<Mensagem[]>([])
-  const [carregando, setCarregando] = useState(false)
+  const [mensagens, setMensagens] = useState<Mensagem[]>([]) //define o estado mensagens como um array vazio
+  const [carregando, setCarregando] = useState(false) //define o estado carregando como falso
 
   const aoEnviarMensagem = async (texto: string) => {
     // adiciona a mensagem do usuário
